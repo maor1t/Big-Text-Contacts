@@ -1,4 +1,4 @@
-package com.example.demo_234_providers_loaders;
+package com.example.Contacts;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
