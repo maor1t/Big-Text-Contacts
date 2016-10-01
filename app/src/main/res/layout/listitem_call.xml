@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:orientation="horizontal"
+    android:padding="5dp" >
+
+    <ImageView
+        android:id="@+id/imageCallType"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/call_missed" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:text="date"
+        android:id="@+id/Date"
+        android:layout_alignTop="@+id/Name"
+        android:layout_alignRight="@+id/Number"
+        android:layout_alignEnd="@+id/Number"
+        android:textSize="@dimen/abc_action_bar_icon_vertical_padding_material"
+        android:layout_above="@+id/Number"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/Name"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:text="name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_above="@+id/Number"
+        android:layout_toRightOf="@+id/imageCallType"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/Date"
+        android:layout_toStartOf="@+id/Date" />
+
+    <TextView
+        android:id="@+id/Number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="number"
+        android:layout_alignBottom="@+id/imageCallType"
+        android:layout_toRightOf="@+id/imageCallType"
+        android:layout_toEndOf="@+id/imageCallType" />
+
+</RelativeLayout>
