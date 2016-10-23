@@ -1,9 +1,15 @@
 package com.example.Contacts;
 
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.net.Uri;
 import android.provider.CallLog;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -12,12 +18,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import static android.support.v4.app.ActivityCompat.startActivity;
+
 public class CallsAdapter extends CursorAdapter {
 
 
     public CallsAdapter(Context context, Cursor c) {
         super(context, c, 0);
     }
+
+    String number;
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
@@ -30,12 +40,13 @@ public class CallsAdapter extends CursorAdapter {
 
 
         long time = cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE));
-        String number = cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER));
+        number = cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER));
         int type = cursor.getInt(cursor.getColumnIndex(CallLog.Calls.TYPE));
         String name = cursor.getString(cursor.getColumnIndex(CallLog.Calls.CACHED_NAME));
 
-
-
+if(name==null){
+    name="מספר לא ידוע";
+}
         TextView textNumber = (TextView) view.findViewById(R.id.Number);
         TextView textDate = (TextView) view.findViewById(R.id.Date);
         ImageView imageCallType = (ImageView) view.findViewById(R.id.imageCallType);
@@ -52,6 +63,9 @@ public class CallsAdapter extends CursorAdapter {
         } else if (type == CallLog.Calls.MISSED_TYPE) {
             imageCallType.setImageResource(R.drawable.call_missed);
         }
-
     }
+
+
+
 }
+
